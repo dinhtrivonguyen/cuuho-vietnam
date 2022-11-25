@@ -1,0 +1,52 @@
+<div class="mat-body login-frame">
+  <div class="head-frame">
+    <h1>Đăng Nhập</h1>
+    <div class="close-icon" [hidden]="!isDialog">
+      <mat-icon mat-dialog-close>close</mat-icon>
+    </div>
+  </div>
+  <div class="head-sub">
+    <h4>Đăng nhập bằng số điện thoại</h4>
+  </div>
+  <form class="login-form" [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
+    <div class="form-item">
+      <sos-input type="text" formControlName="numberphone" label="Số điện thoại" [required]="true" [pattern]="regex"
+        [error]="getError('phone')"></sos-input>
+    </div>
+    <div class="form-item">
+      <sos-input type="{{isShow == true ? 'text' : 'password'}}" formControlName="password" label="Mật khẩu"
+        [required]="true" [error]="getError('pass')"></sos-input>
+      <span *ngIf="isShow == false" (click)="showPass(true)">hiện</span><span *ngIf="isShow == true"
+        (click)="showPass(false)">ẩn</span>
+    </div>
+    <p *ngIf='isError' style="color: red">Tên đăng nhập hoặc mật khẩu không chính xác</p>
+    <div class="goto">
+      <div class="item-goto">
+        <input type="checkbox" name="" id="">
+        <p>Ghi nhớ đăng nhập</p>
+      </div>
+      <div class="item-goto" (click)="openResetPassDialog()">
+        <p>Quên mật khẩu?</p>
+      </div>
+    </div>
+    <div class="form-btn">
+      <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!formGroup.valid">
+        ĐĂNG NHẬP
+      </button>
+    </div>
+  </form>
+  <p class="otherway">Hoặc</p>
+  <div class="another-login">
+    <!-- <div class="item">
+      <img src="assets/icon-google.png" alt="">
+      <p>Đăng nhập bằng Google</p>
+    </div>
+    <div class="item">
+      <img src="assets/icon-fb.png" alt="">
+      <p>Đăng nhập bằng Facebook</p>
+    </div> -->
+    <div class="item" (click)="signup()">
+      <p>Tạo một tài khoản</p>
+    </div>
+  </div>
+</div>

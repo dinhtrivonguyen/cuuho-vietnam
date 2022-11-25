@@ -1,0 +1,9 @@
+<div class="member_item">
+  <div class="item">
+    <mat-icon>account_circle</mat-icon>
+    <div>
+      <p>{{ member?.last_name }} {{ member?.first_name }} <span>. {{member?.role == 'admin' ? "Quản trị": ""}}</span></p>
+      <p class="news_items_text_content">{{ member?.phone_number }}</p>
+    </div>
+  </div>
+</div>

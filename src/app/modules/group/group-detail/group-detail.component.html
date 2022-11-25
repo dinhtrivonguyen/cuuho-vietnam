@@ -1,0 +1,87 @@
+<div class="group-details">
+  <button (click)="onClose()" mat-icon-button aria-label="close Icon">
+    <mat-icon>close</mat-icon>
+  </button>
+  <section class="request_sesstion p-1" style="position: relative;">
+    <h3>Thông tin</h3>
+    <div class="item-request-section">
+      <div class="content">
+        <div class="item">
+          <p>Ảnh đại diện</p>
+          <div class="fileUpload btn btn--browse">
+            <span>+ Thay đổi</span>
+            <input id="uploadBtn" class="upload" type="file" (change)="onFileSelected($event, group.id)"> 
+          </div>
+        </div>
+        <img class="group_items_image" width="50px" src="{{ group?.avatar == '' || group?.avatar == undefined ? 'assets/volunteer.png' : group?.avatar }}" alt="image" />
+      </div>
+      <div class="content">
+        <div class="item">
+          <p>Tên nhóm</p>
+          <a (click)="openUpdateName(group.name, group.id)">Sửa</a>
+        </div>
+        <p>{{ group.name }}</p>
+      </div>
+      <div class="content">
+        <div class="item">
+          <p>Địa chỉ</p>
+          <a (click)="openUpdateAddress(
+            group?.address_info?.province_name,
+            group?.address_info?.province_id,
+            group?.address_info?.ward_name,
+            group?.address_info?.ward_code,
+            group?.address_info?.district_name,
+            group?.address_info?.district_code,
+            group?.address_info?.address,
+             group.id)">Sửa</a>
+        </div>
+        <p>{{ group?.address_info?.address }},
+          {{ group?.address_info?.ward_name }},
+          {{ group?.address_info?.district_name }},
+          {{ group?.address_info?.province_name }}</p>
+      </div>
+      <div class="content">
+        <div class="item">
+          <p>Số điện thoại</p>
+          <a (click)="openUpdatePhone(group?.contact_info?.phone_number, group.id)">Sửa</a>
+        </div>
+        <p>{{ group?.contact_info?.phone_number }}</p>
+      </div>
+      <div class="content">
+        <div class="item">
+          <p>Loại hỗ trợ</p>
+          <a (click)="openUpdateSupport(group?.detail_info?.support_types, group.id)">Sửa</a>
+        </div>
+        <div class="item-type" fxLayout="row wrap" fxLayoutGap="5px grid">
+          <app-button height="40" color="#FCE7E5" text="{{ type.name }}"
+            *ngFor="let type of group?.detail_info?.support_types"></app-button>
+        </div>
+      </div>
+      <div class="content">
+        <div class="item">
+          <p>Thành viên</p>
+          <a (click)="openAddMember(group.members, group.id)">+Thêm</a>
+        </div>
+        <div class="member" *ngFor="let member of group.members">
+          <app-member [member]="member"></app-member>
+          <a *ngIf="member?.role !== 'admin'" (click)="removeMember(group.id, member?.id)">Xoá</a>
+        </div>
+      </div>
+    </div>
+    <a (click)="openDeleteGroup(group.id)">xoá nhóm</a>
+  </section>
+  <!-- <section fxFlex="1/3" class="p-1 activity_sestion">
+    <p style="font-weight: bold; font-size: 17px;">Cập nhật trạng thái</p>
+    <sos-input label="Viết cập nhật..."></sos-input>
+    <div *ngFor="let comment of lastestComment" style="margin-bottom: 15px;">
+      <app-comment-box [comment]="comment"></app-comment-box>
+    </div>
+  </section>
+  <section fxFlex="1/3" class="p-1 comment_sestion">
+    <p style="font-weight: bold; font-size: 17px;">Hoạt động thiện nguyện</p>
+    <sos-input label="Viết cập nhật..."></sos-input>
+    <div *ngFor="let post of postList" style="margin-bottom: 10px;">
+      <app-post-card [post]="post"></app-post-card>
+    </div>
+  </section> -->
+</div>

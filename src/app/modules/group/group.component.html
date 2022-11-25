@@ -1,0 +1,38 @@
+<div class="header">
+  <p style="font-size: 20px; font-weight: bold;">Nhóm thiện nguyện</p>
+  <app-button
+    height="40"
+    text="TẠO NHÓM"
+    (click)="openDialog()"
+    *ifRoles="['ADMIN', 'OPERATOR', 'USER']"
+  ></app-button>
+</div>
+<mat-divider></mat-divider>
+<div class="search-group">
+  <mat-form-field>
+    <mat-select width="50" placeholder="Loại hỗ trợ" [formControl]="filterSupport" (selectionChange)="filter($event)" multiple>
+      <mat-option *ngFor="let support of supportTypes" [value]="support.type">
+        {{support.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="search">
+    <input type="text" class="search-input" placeholder="Tìm kiếm" [ngModel]="keysearch" (ngModelChange)="onSearchChange($event)">
+    <mat-icon aria-hidden="true">search</mat-icon>
+  </div>
+</div>
+<div fxLayout="row wrap" fxLayoutGap="25px grid">
+  <div
+    class="items-direction"
+    [fxFlex]="100 / gridColumns + '%'"
+    fxFlex.xs="100%"
+    fxFlex.sm="33%"
+    *ngFor="let group of searchData"
+  >
+    <app-group-card
+    class="item-direction"
+      (click)="openDialogGroup(group)"
+      [group]="group"
+    ></app-group-card>
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<mat-toolbar #container>
+  <div class="navbar-left">
+    <div class="logo_button">
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
+        (click)="showFiller = !showFiller">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <a [routerLink]="['/']">
+        <img src="assets/logo.png" alt="">
+        <span>Tiếp Sức</span>
+      </a>
+    </div>
+    <div class="location">
+      <img src="assets/icon-location.png" alt="" srcset="">
+      <form [formGroup]="provinceForm">
+        <select formControlName="province">
+          <option *ngFor="let province of provinces" [ngValue]="province">{{ province.name }}</option>
+        </select>
+      </form>
+      <img class="down-arrow" src="assets/down-arrow.png" alt="" srcset="">
+    </div>
+  </div>
+  <div class="navbar-right">
+    <p><span>Hotline:</span><a href="tel:18001562">18001562</a></p>
+    <p><span>Email:</span> <a href="mailto:info@tiepsuc.org">info@tiepsuc.org</a></p>
+    <div class="item-log" *ngIf="!loginSuccess">
+      <p (click)="loginPopup();">ĐĂNG NHẬP</p>
+      <p (click)="openSignupDialog()">ĐĂNG KÍ</p>
+    </div>
+    <div class="item-log" *ngIf="loginSuccess" (click)="gotoProfile()">
+      <img *ngIf="isAvatar" src="this.userInfor.avatar" alt="">
+      <div class="short-name" *ngIf="!isAvatar">
+        <span>{{getShortName(this.userInfor.last_name)}}{{getShortName(this.userInfor.first_name)}}</span>
+      </div>
+      <mat-icon (click)="logout()" aria-hidden="false">logout</mat-icon>
+    </div>
+  </div>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav mode="side" opened class="drawer" *ngIf="showFiller">
+    <div class="drawer-items">
+      <div *ngFor="let item of sideItems" (click)="closeMenu();">
+        <div *ifRoles="item.roles">
+          <div class="drawer-item" [routerLink]="item.url" [routerLinkActiveOptions]="{ exact: true }" [routerLinkActive]="['active-item']">
+            <mat-icon aria-hidden="false">{{ item.icon }}</mat-icon> &nbsp; &nbsp;
+            {{ item.name }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="drawer-footer">
+      <div class="logg" *ngIf="!loginSuccess">
+        <p (click)="loginPopup();">ĐĂNG NHẬP</p>
+        <p (click)="openSignupDialog()" >ĐĂNG KÍ</p>
+      </div>
+      <div class="logg" *ngIf="loginSuccess" (click)="gotoProfile()">
+        <img *ngIf="isAvatar" src="this.userInfor.avatar" alt="">
+        <div class="short-name" *ngIf="!isAvatar">
+          <span>{{getShortName(this.userInfor.last_name)}}{{getShortName(this.userInfor.first_name)}}</span>
+        </div>
+        <mat-icon (click)="logout()" aria-hidden="false">logout</mat-icon>
+      </div>
+      <p><span>Hotline:</span><a href="tel:18001562">18001562</a></p>
+      <p><span>Email:</span> <a href="mailto:info@tiepsuc.org">info@tiepsuc.org</a></p>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content class="drawer-content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
