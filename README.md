@@ -1,4 +1,4 @@
-# VNSOS
+# cuuho-vietnam
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.3.
 
@@ -52,5 +52,3 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 - Choose `publish` workflow
 - Click on `Run workflow`, fill in the release tag name (ie, v1.0.0) and it will be published to k8s on Vinacis
-
-# cuuho-vietnam
