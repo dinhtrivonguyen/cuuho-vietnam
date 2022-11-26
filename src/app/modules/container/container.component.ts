@@ -69,7 +69,7 @@ export class ContainerComponent implements OnInit, OnDestroy {
         roles: ['OPERATOR', 'ADMIN', 'USER', 'GUEST']
       },
       {
-        name: 'Trạm y tế',
+        name: 'Trạm cứu hộ',
         icon: 'local_hospital',
         url: 'clinic',
         roles: ['OPERATOR', 'ADMIN', 'USER', 'GUEST']
