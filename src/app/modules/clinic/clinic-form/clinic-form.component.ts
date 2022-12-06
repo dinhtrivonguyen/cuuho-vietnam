@@ -57,7 +57,7 @@ export class ClinicFormComponent implements OnInit, OnDestroy {
     private formatService: FormatService,
     private groupService: GroupService) {
     this.clinicForm = new FormGroup({
-      name: new FormControl("Trạm y tế"),
+      name: new FormControl("Trạm cứu hộ"),
       type: new FormControl('tram_y_te'),
       contact_info: new FormGroup({
         name: new FormControl(''),

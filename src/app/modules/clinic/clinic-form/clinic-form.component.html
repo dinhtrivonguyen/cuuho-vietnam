@@ -3,7 +3,7 @@
         <mat-icon>close</mat-icon>
     </button></span>
 <form class="example-form" [formGroup]="clinicForm" (ngSubmit)="onSubmit()" style="width:100%">
-    <h2><b *ngIf="data.action!='update'">Tạo trạm y tế</b><b *ngIf="data.action==='update'">Tạo trạm y tế</b></h2>
+    <h2><b *ngIf="data.action!='update'">Tạo Trạm cứu hộ</b><b *ngIf="data.action==='update'">Tạo Trạm cứu hộ</b></h2>
     <br />
     <div #content class="content">
 
@@ -22,7 +22,7 @@
 
         </fieldset>
         <br />
-        <h4><b>Thông tin trạm y tế</b></h4>
+        <h4><b>Thông tin Trạm cứu hộ</b></h4>
         <fieldset formGroupName="detail_info">
             <mat-form-field *ngIf="this.data.action!='update'" class="example-full-width" appearance="outline">
                 <mat-label>Loại hỗ trợ</mat-label>
@@ -34,8 +34,8 @@
             </mat-form-field>
         </fieldset>
         <mat-form-field class="example-full-width" appearance="outline">
-            <mat-label>Tên trạm y tế</mat-label>
-            <input formControlName="name" matInput placeholder="Tên trạm y tế..." required />
+            <mat-label>Tên Trạm cứu hộ</mat-label>
+            <input formControlName="name" matInput placeholder="Tên Trạm cứu hộ..." required />
         </mat-form-field>
         <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Mô tả</mat-label>
