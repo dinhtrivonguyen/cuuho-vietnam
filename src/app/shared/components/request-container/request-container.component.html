@@ -1,6 +1,16 @@
 <div class="request_container scrollable" scrollTracker (scrollingFinished)="onScrollingFinished()">
     <div class="empty" *ngIf="requests?.length === 0 || false">
-        <img src="assets/empty.jpg" alt="">
+        <!-- <img src="assets/empty.jpg" alt=""> -->
+        
+        <style>
+            audio{
+                height : 70px;
+                border-radius: 2px;
+                cursor: pointer;
+            }
+        </style>
+        <audio controls src="assets/Perfect - Ed Sheeran (NhacPro.net).mp3"></audio>
+        
     </div>
     <div *ngFor="let request of requests">
         <app-request-card type="{{type}}" (click)="chooseRequest(request)" [session]="session" [request]="request" [isSuggested]="isSuggested">
