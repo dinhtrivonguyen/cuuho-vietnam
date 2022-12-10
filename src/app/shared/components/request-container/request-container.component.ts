@@ -34,7 +34,6 @@ export class RequestContainerComponent implements OnInit {
     });
 
     dialogRef.afterDismissed().subscribe(res => this.requests = this.requests?.map(element => element.id === res.id ? res : element))
-
   }
 
 }
